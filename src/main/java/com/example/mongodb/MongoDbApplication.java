@@ -11,17 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 
 @SpringBootApplication
-public class MongoDbApplication implements CommandLineRunner {
+public class MongoDbApplication {
 
 	@Autowired
 	private AuthorRepository authorRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MongoDbApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		authorRepository.save(Author.builder().name("Van A").books(List.of(Book.builder().name("GDCD").build())).build());
 	}
 }

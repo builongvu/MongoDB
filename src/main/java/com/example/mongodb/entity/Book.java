@@ -13,6 +13,6 @@ import java.sql.Date;
 public class Book {
 
     String name;
-    Date publishDate;
+    String publishDate;
 
 }
