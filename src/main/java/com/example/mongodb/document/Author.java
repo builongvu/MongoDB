@@ -1,13 +1,14 @@
-package com.example.mongodb.entity;
+package com.example.mongodb.document;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceCreator;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -25,7 +26,8 @@ public class Author {
 //    @Indexed
     String name;
     int age;
-    @Field(name = "listBook")
+//    @DBRef
+//    @Field(name = "listBook")
     List<Book> books = new ArrayList<>();
 
     @PersistenceCreator

@@ -1,18 +1,16 @@
-package com.example.mongodb.entity;
+package com.example.mongodb;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import java.sql.Date;
+import java.io.Serializable;
 
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Book {
-
+public class Student implements Serializable {
+    int id;
     String name;
-    String publishDate;
-
 }

@@ -28,4 +28,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     public MongoClient mongoClient() {
         return MongoClients.create();
     }
+
+
 }
