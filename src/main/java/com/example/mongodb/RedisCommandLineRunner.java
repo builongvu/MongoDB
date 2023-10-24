@@ -34,12 +34,12 @@ public class RedisCommandLineRunner implements CommandLineRunner {
 //        System.out.println(redisService.getListByIndex("letter", 1));
 
         //----------------------------------------Hash----------------------------------------------
-        redisService.setHash("animal", Map.of("type", "cat", "color", "yellow"));
+//        redisService.setHash("animal", Map.of("type", "cat", "color", "yellow"));
 
-        redisService.getHash("animal").entrySet().forEach(entry -> {
-            System.out.println(entry.getKey()+" "+entry.getValue());
-        });
+//        redisService.getHash("animal").entrySet().forEach(entry -> {
+//            System.out.println(entry.getKey()+" "+entry.getValue());
+//        });
 
-        System.out.println(redisService.getAValueFromHash("animal", "type"));
+//        System.out.println(redisService.getAValueFromHash("animal", "type"));
     }
 }

@@ -1,10 +1,16 @@
 package com.example.mongodb;
 
+import com.example.mongodb.document.*;
 import com.example.mongodb.repository.AuthorRepository;
+import com.example.mongodb.repository.EmployeeRepository;
+import com.example.mongodb.repository.UnitRepository;
 import com.example.mongodb.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -12,6 +18,8 @@ public class MongodbCommandLineRunner implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final AuthorService authorService;
+    private final UnitRepository unitRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -23,8 +31,21 @@ public class MongodbCommandLineRunner implements CommandLineRunner {
 //                ).build(),
 //                Author.builder().name("Thi B").age(60).books(List.of(
 //                        Book.builder().name("anh").publishDate("12-03-2012").build()
+//                )).build(),
+//                Author.builder().name("Van C").age(90).books(List.of(
+//                        Book.builder().name("vat ly").publishDate("23-09-2003").build()
 //                )).build()
 //        ).forEach(authorService::createUseMongoRepository);
+
+        Employee e1 = Employee.builder().name("john").address(new Address("1 street, 4 district")).build();
+        Employee e2 = Employee.builder().name("steve").address(new Address("6 street, 8 district")).build();
+        Employee e3 = Employee.builder().name("ken").address(new Address("7 street, 4 district")).build();
+        Employee e4 = Employee.builder().name("steve").address(new Address("7 street, 1 district")).build();
+        employeeRepository.saveAll(List.of(e1, e2, e3, e4));
+        unitRepository.saveAll(List.of(
+                Unit.builder().name("unit1").employees(Set.of(e1, e2)).build(),
+                Unit.builder().name("unit2").employees(Set.of(e3, e4)).build()
+        ));
 
 //        authorRepository.save(Author.builder().name("Van A").age(30).books(List.of(Book.builder().name("Van").publishDate("12-12-1980").build())).build());
 
